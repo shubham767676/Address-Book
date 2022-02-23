@@ -31,11 +31,46 @@ public class AddressBookMain {
 		System.out.println(con);
 	}
 
+	public void editPerson() {
+
+		Contacts temp = person.get(0); // transfer from addressbook to temp new variable
+		System.out.println(temp);
+		System.out.println("Enter the name to edit in contact");
+		String s = sc.next();
+
+		if (s.equals(temp.getFirstName())) {
+			System.out.print("Choice to edit \n1)FirstName\n2)LastName\n3)Address\n4)City\n5)State\n"
+					+ "6)Zip\n7)PhoneNumber\n8)Email\n9)Exit");
+			int choice = sc.nextInt();
+			switch (choice) {
+			case 1 -> temp.setFirstName(sc.next());
+			case 2 -> temp.setLastName(sc.next());
+			case 3 -> temp.setAddress(sc.next());
+			case 4 -> temp.setCity(sc.next());
+			case 5 -> temp.setState(sc.next());
+			case 6 -> temp.setZip(sc.next());
+			case 7 -> temp.setPhoneNumber(sc.next());
+			case 8 -> temp.setEmail(sc.next());
+			case 9 -> {
+				System.out.println("Exiting");
+				break;
+			}
+			}
+
+		} else {
+			System.out.println("Your name is not present in Contact");
+		}
+		System.out.println("After Editing the Contact");
+		person.set(0, temp); // storing back from temp variable to addressbook
+		System.out.println(person);
+
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book");
 		AddressBookMain addr = new AddressBookMain();
 		addr.addPerson();
-
+		addr.editPerson();
 	}
 
 }
