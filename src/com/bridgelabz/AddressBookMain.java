@@ -1,12 +1,14 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookMain {
+
+	ArrayList<Contacts> person = new ArrayList<Contacts>();
 	static Scanner sc = new Scanner(System.in);
 
-	public static void addressBook() {
-
+	public void addPerson() {
 		System.out.println("Enter the First Name");
 		String fName = sc.next();
 		System.out.println("Enter the Last Name");
@@ -24,11 +26,15 @@ public class AddressBookMain {
 		System.out.println("Enter the Email");
 		String email = sc.next();
 
+		Contacts con = new Contacts(fName, lName, address, city, state, zip, phoneNumber, email);
+		person.add(con);
+		System.out.println(con);
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book");
-		addressBook();
+		AddressBookMain addr = new AddressBookMain();
+		addr.addPerson();
 
 	}
 
