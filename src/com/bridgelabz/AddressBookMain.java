@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class AddressBookMain {
 
 	static Scanner sc = new Scanner(System.in);
-	LinkedList<Contacts> person = new LinkedList<>();
+	ArrayList<Contacts> person = new ArrayList<>();
 
 	public void addPerson() {
 		System.out.println("Enter the First Name");
