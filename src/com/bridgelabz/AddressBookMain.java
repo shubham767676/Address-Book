@@ -66,11 +66,27 @@ public class AddressBookMain {
 
 	}
 
+	public void deletePerson() {
+		System.out.println("Enter First Name to Delete");
+		String firstName = sc.next();
+//		Contacts temp = person.get(0);
+		if (firstName.equals(person.get(0).getFirstName())) // checking for contact is present or not
+		{
+			System.out.println(person.get(0));// printing tha contacts
+			person.remove(0);/// removing the contact
+			System.out.println("Contact Deleted Successfully");
+		} else {
+			System.out.println("Invalid First Name");
+
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book");
 		AddressBookMain addr = new AddressBookMain();
 		addr.addPerson();
 		addr.editPerson();
+		addr.deletePerson();
 	}
 
 }
