@@ -109,7 +109,7 @@ public class AddressBookMain {
 			case 2 -> editPerson();
 			case 3 -> deletePerson();
 			case 4 -> System.out.println("Thank You for using Address Book");
-			default -> System.out.println("Invalid option");
+			default -> System.out.println("Please Enter valid option");
 			}
 			if (option == 4)
 				break;
@@ -119,9 +119,6 @@ public class AddressBookMain {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book");
 		AddressBookMain addr = new AddressBookMain();
-//		addr.addPerson();
-//		addr.editPerson();
-//		addr.deletePerson();
 		addr.addMultiplePerson();
 	}
 
