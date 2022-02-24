@@ -1,12 +1,12 @@
 package com.bridgelabz;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class AddressBookMain {
 
-	ArrayList<Contacts> person = new ArrayList<Contacts>();
 	static Scanner sc = new Scanner(System.in);
+	LinkedList<Contacts> person = new LinkedList<>();
 
 	public void addPerson() {
 		System.out.println("Enter the First Name");
@@ -33,37 +33,56 @@ public class AddressBookMain {
 
 	public void editPerson() {
 
-		Contacts temp = person.get(0); // transfer from addressbook to temp new variable
-		System.out.println(temp);
 		System.out.println("Enter the name to edit in contact");
-		String s = sc.next();
+		String firstName = sc.next();
 
-		if (s.equals(temp.getFirstName())) {
-			System.out.print("Choice to edit \n1)FirstName\n2)LastName\n3)Address\n4)City\n5)State\n"
-					+ "6)Zip\n7)PhoneNumber\n8)Email\n9)Exit");
-			int choice = sc.nextInt();
-			switch (choice) {
-			case 1 -> temp.setFirstName(sc.next());
-			case 2 -> temp.setLastName(sc.next());
-			case 3 -> temp.setAddress(sc.next());
-			case 4 -> temp.setCity(sc.next());
-			case 5 -> temp.setState(sc.next());
-			case 6 -> temp.setZip(sc.next());
-			case 7 -> temp.setPhoneNumber(sc.next());
-			case 8 -> temp.setEmail(sc.next());
-			case 9 -> {
-				System.out.println("Exiting");
-				break;
-			}
-			}
+		for (int i = 0; i < person.size(); i++) {
+			Contacts con = person.get(i);
+			if (firstName.equals(con.getFirstName())) {
+				while (true) {
+					System.out.print("Choice to edit \n1)FirstName\n2)LastName\n3)Address\n4)City\n5)State\n"
+							+ "6)Zip\n7)PhoneNumber\n8)Email\n9)Exit");
+					// if (firstName.equals(con.getFirstName())) {
 
-		} else {
-			System.out.println("Your name is not present in Contact");
+					int choice = sc.nextInt();
+					switch (choice) {
+					case 1:
+						con.setFirstName(sc.next());
+						break;
+					case 2:
+						con.setLastName(sc.next());
+						break;
+					case 3:
+						con.setAddress(sc.next());
+						break;
+					case 4:
+						con.setCity(sc.next());
+						break;
+					case 5:
+						con.setState(sc.next());
+						break;
+					case 6:
+						con.setZip(sc.next());
+						break;
+					case 7:
+						con.setPhoneNumber(sc.next());
+						break;
+					case 8:
+						con.setEmail(sc.next());
+						break;
+					default:
+						System.out.println("Enter Valid Choice");
+						break;
+					}
+					if (choice == 9)
+						break;
+				}
+				person.set(i, con);
+				System.out.println("Contact after Edit");
+				System.out.println(person);
+
+			}
 		}
-		System.out.println("After Editing the Contact");
-		person.set(0, temp); // storing back from temp variable to addressbook
-		System.out.println(person);
-
 	}
 
 	public void deletePerson() {
@@ -81,12 +100,29 @@ public class AddressBookMain {
 		}
 	}
 
+	public void addMultiplePerson() {
+		while (true) {
+			System.out.println("Enter the option \n1)To Add Contact 2)To Edit Contact 3)To Delete Contact 4)Exit");
+			int option = sc.nextInt();
+			switch (option) {
+			case 1 -> addPerson();
+			case 2 -> editPerson();
+			case 3 -> deletePerson();
+			case 4 -> System.out.println("Thank You for using Address Book");
+			default -> System.out.println("Invalid option");
+			}
+			if (option == 4)
+				break;
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book");
 		AddressBookMain addr = new AddressBookMain();
-		addr.addPerson();
-		addr.editPerson();
-		addr.deletePerson();
+//		addr.addPerson();
+//		addr.editPerson();
+//		addr.deletePerson();
+		addr.addMultiplePerson();
 	}
 
 }
